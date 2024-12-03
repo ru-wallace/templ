@@ -10,6 +10,8 @@ If enabled, every 30s the program takes a temperature reading from the sensor, a
 ## NOTICE: Using the 'install' function adds a systemd service and timer, and enables them to run every 30s from startup, continously logging and occasionally plotting data. If you do not want this, you can use the tool without installing (See below)
 Because the tool uses the i2c-tools utilities, some tools from which require root access, the tool will likely not work without using ```sudo``` or otherwise running as a root user.
 
+USE AT YOUR OWN RISK.
+As indicated in the GNU GP License, the creator is not liable for any damages or costs as a result of using this program. It should be commons sense but don't run unknown scripts on your computer unless you know EXACTLY what they are doing.
 
 ## Usage
 - Navigate to the directory in which you want to install tempL
