@@ -26,7 +26,7 @@ set ytics format '%.2f°'; \
 set xlabel 'Time'; \
 set ylabel 'Temperature'; \
 set grid; \
-set title sprintf('CPU Temperature - Generated: %s', current_date); \
+set title sprintf('Temperature - Generated: %s', current_date); \
 set yrange[*:*]; \
 set key left bottom; \
 "
