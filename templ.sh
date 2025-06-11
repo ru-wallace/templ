@@ -230,7 +230,7 @@ mkdir -p "$LOG_DIR"
 
 if [ ! -f "$LOG_FILE" ]; then
     # If the file does not exist, write a CSV header
-    echo "Timestamp, CPU Temperature, Enviromental Temp" > "$LOG_FILE"
+    echo "Timestamp, CPU Temperature, Environmental Temp" > "$LOG_FILE"
 fi
 
 #Get the last 999 records
@@ -248,7 +248,7 @@ fi
 
 #clear the live log file and add the header and 999 most recent rows back, then append the new data
 
-echo "Timestamp, CPU Temperature, Enviromental Temp" > "$LIVE_LOG_FILE"
+echo "Timestamp, CPU Temperature, Environmental Temp" > "$LIVE_LOG_FILE"
 if [ ! "$RECENT_ENTRIES" == "" ]; then
     echo "$RECENT_ENTRIES" >> "$LIVE_LOG_FILE"
 fi
