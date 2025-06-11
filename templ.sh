@@ -18,6 +18,8 @@ Description=\"Templ Temperature Logging and plotting tool.\"\n \
 \n \
 [Service]\n \
 Type=oneshot\n \
+User=$SUDO_USER\n \
+Group=$SUDO_USER\n \
 Environment=\"LAUNCHED_BY_SYSTEMD=yes\"\n \
 ExecStart=\"/usr/local/bin/templ\"\n \
 \n \
@@ -127,7 +129,7 @@ function install_templ() {
         exit 1
     fi
 
-    mkdir -p "$LOG_DIR"
+    sudo -u $SUDO_USER -g $SUDO_USER mkdir -p "$LOG_DIR"
     if [ -f "$SYMLINK_PATH" ]; then
         rm "$SYMLINK_PATH"
     fi
@@ -225,6 +227,13 @@ cpu_temp=$(get_cpu_temp)
 
 #Get environmental temperature from a MS5837 sensor using the I2C protocol
 env_temp="$(get_temp_MS5837)" 2>/dev/null
+
+temp_check="$env_temp>-30 && $env_temp<100"
+
+if ! echo "$temp_check" | bc -l >/dev/null 2>&1; then
+    sleep 0.2
+    env_temp = "$(get_temp_MS5837)" 2>/dev/null
+fi
 
 mkdir -p "$LOG_DIR"
 
